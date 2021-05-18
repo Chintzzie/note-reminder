@@ -1,6 +1,7 @@
 package com.services;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -35,6 +36,22 @@ public class NoteBookService {
 		noteBook.setTitle(notebookName);
 		session.update(noteBook);
 		tx.commit();
+	}
+	
+	public static void updateNote(Integer id, Timestamp remainderTS) {
+		
+		tx=session.beginTransaction();
+		
+		Note note = (Note) session.get(Note.class, id);
+		if(!note.isReminderSet())
+			note.setReminderTS(remainderTS);
+		note.setReminderSet(!note.isReminderSet());
+		
+		System.out.println("NBS: "+note.getReminderTS().toString());
+	
+		session.update(note);
+		tx.commit();
+		
 	}
 
 	

@@ -7,7 +7,6 @@
 <%@page import="com.entities.User"%>
 <%@page import="org.hibernate.Transaction"%>
 <%@page import="com.helper.FactoryProvider"%>
-<%@page import="com.helper.FactoryProvider"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!doctype html>

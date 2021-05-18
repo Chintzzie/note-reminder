@@ -48,8 +48,15 @@ public class SaveNoteServlet extends HttpServlet {
                 
                 String title=request.getParameter("title");
                 String content=request.getParameter("content");
+                String nbid=request.getParameter("noteBookId") ;
                 
-         Note note=new Note(title,content,new Date());       
+                System.out.println("noteBookId="+nbid);
+                
+                int noteBookId=Integer.parseInt(nbid);
+                
+                Note note=new Note(title,content,new Date(),noteBookId);
+                
+                //System.out.println("SaveNoteServlet: "+note.getNoteBookId());
               
                 try (Session s = FactoryProvider.getFactory().openSession()) {
                     Transaction tx=s.beginTransaction();
@@ -66,6 +73,8 @@ public class SaveNoteServlet extends HttpServlet {
               
        
             } catch (Exception e) {
+            	System.out.println("excpetion in server");
+            	e.printStackTrace();
             }
    
             

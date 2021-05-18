@@ -44,6 +44,10 @@
                     <label for="content">Note Content</label>
                     <textarea name="content" id="content" placeholder="Enter your content here.." class="form-control" style="height: 300px;"></textarea>
                 </div>
+                
+                
+                
+                <textarea name="noteBookId" id="noteBookId"  hidden placeholder="Enter your noteBookId here.." class="form-control"  style="height: 300px;"><%= request.getParameter("noteBookId") %></textarea>
 
                 <div class="container text-center">
                     <button type="submit"  class="btn btn-primary">Add Note</button>
@@ -77,7 +81,7 @@
                                         swal("Noted it!", "Add another..?", "success");
                                     } else
                                     {
-                                        swal("Error!!", "Something went wrong try again...", "error");
+                                        swal("Error!!", "Error from server", "error");
                                     }
 
 

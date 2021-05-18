@@ -33,8 +33,7 @@
             
             <div class="container text-center my-2">
        
-       <a class="btn btn-outline-primary text-center my-2 " href="createNoteBookForm.jsp">Start here by adding notebook</a>
-        <a class="btn btn-outline-primary text-center my-2 " href="add_notes.jsp">Start here</a>
+       
     </div>
         </div>
     

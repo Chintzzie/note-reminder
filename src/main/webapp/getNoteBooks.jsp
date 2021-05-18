@@ -21,15 +21,18 @@
     
     <div class="container">
         <%@include file="navbar.jsp" %> 
-        
+        <a class="btn btn-outline-primary text-center my-2 " href="/NoteTaker/createNoteBookForm.jsp">Add noteBook</a>
         <%
         	List<NoteBook> noteBooks= (List<NoteBook>)request.getAttribute("noteBooks");
+        	
+        
+        	System.out.println("chints:"+noteBooks);
         
         	for(NoteBook noteBook:noteBooks){
         %>
 	    
 	    <div class="card mt-5">
-	        <img src="notes.jpg" class="card-img-top m-2 p-2 mx-auto" alt="note image" style="max-width: 200px">
+	        <img src="/NoteTaker/notes.jpg" class="card-img-top m-2 p-2 mx-auto" alt="note image" style="max-width: 200px">
 	        
 	        
 			  <div class="card-body px-5">
@@ -39,7 +42,8 @@
 				<div class="container text-center  mt-2 ">
 				   
 					<a href="/NoteTaker/editNoteBookForm.jsp?noteBookId=<%=noteBook.getId()%>" class="btn btn-primary">Update</a>
-			
+					<a href="/NoteTaker/all_notes.jsp?noteBookId=<%=noteBook.getId()%>" class="btn btn-secondary">Show notes</a>
+					<a href="/NoteTaker/add_notes.jsp?noteBookId=<%=noteBook.getId()%>" class="btn btn-success">Add note</a>
 					<a href="delete?noteBookId=<%=noteBook.getId()%>" class="btn btn-danger">Delete</a>
 		
 				</div>

@@ -65,7 +65,7 @@ CriteriaQuery<Note> crt = builder.createQuery(Note.class);
     
  Root<Note> root = crt.from(Note.class);
    // crt.select(root);
-   crt.select(root).where(builder.isNotNull(root.get("content")));
+   crt.select(root).where(builder.isNotNull(root.get("content"))).where(builder.equal(root.get("noteBookId"), request.getParameter("noteBookId")));
    crt.orderBy(builder.desc(root.get("addedDate")));
     Query<Note> q = s.createQuery(crt);
    List<Note> list=q.getResultList();
@@ -101,6 +101,26 @@ CriteriaQuery<Note> crt = builder.createQuery(Note.class);
     
    
   </div>
+  <form id="updateRemainder" action="/NoteTaker/NoteBooks/updateRemainder" method="post">
+                <div class="form-group">
+                
+                
+                    <label for="remainderTS">Remainder Time</label>
+                    <input name="remainderTS" type="datetime-local" value=<%= notes.getReminderTS().toString().replace(" ", "T") %> class="form-control" id="remainderTS" aria-describedby="emailHelp" required="true">
+					<input hidden name="noteId" type="number"  value =<%= notes.getId() %> class="form-control" id="noteId" aria-describedby="emailHelp" required="true">
+                </div>
+                
+                <% String submitRemainder="set Remainder";
+                    		if(notes.isReminderSet())
+                    			submitRemainder="Unset Remainder";
+                    		
+                %>
+                
+                <div class="container text-center">
+                    <button type="submit"  class="btn btn-primary"><%= submitRemainder%>></button>
+                </div>
+                
+            </form>
 </div>
     
     
