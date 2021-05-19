@@ -37,6 +37,10 @@
       		</li>
       		
       	<li class="nav-item">
+          		<a class="nav-link" href="/NoteTaker/NoteBooks/getRemainders?userId=<%=uid %>" tabindex="-1" aria-disabled="true">Get Remainders</a>
+      		</li>
+      		
+      	<li class="nav-item">
           		<a class="nav-link" href="/NoteTaker/logout.jsp" tabindex="-1" aria-disabled="true">Logout</a>
       		</li>
       

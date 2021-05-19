@@ -42,7 +42,15 @@ public class Note {
     
     
     
-     public Note(String title, String content, Date addedDate,int noteBookId) {
+     @Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.id+","+this.title+","+this.content+","+this.noteBookId+","+this.isReminderSet+","+this.reminderTS;
+	}
+
+
+
+	public Note(String title, String content, Date addedDate,int noteBookId) {
         this.id = new Random().nextInt(10000);
         this.title = title;
         this.content = content;
@@ -108,6 +116,9 @@ public class Note {
 
 
 	public Timestamp getReminderTS() {
+		if  ( reminderTS.before( Timestamp.valueOf( LocalDateTime.now() ) ) )
+			setReminderSet(false);
+		
 		return reminderTS;
 	}
 

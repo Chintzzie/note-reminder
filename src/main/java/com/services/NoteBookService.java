@@ -2,6 +2,8 @@ package com.services;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -51,6 +53,24 @@ public class NoteBookService {
 	
 		session.update(note);
 		tx.commit();
+		
+	}
+	
+	
+public static List<Note> getRemainders(int userId) {
+	
+		List<NoteBook> userNoteBooks=listOfNoteBook(userId);
+		List<Integer> userNoteBooksIds=new ArrayList<Integer>();
+		for (NoteBook nb:userNoteBooks) {
+			userNoteBooksIds.add(nb.getId());
+		}
+		
+		criteria = session.createCriteria(Note.class);
+		criteria.add(Restrictions.in("noteBookId",userNoteBooksIds ));
+		criteria.add(Restrictions.eq("isReminderSet", true));
+		criteria.add(Restrictions.ge("reminderTS", Timestamp.valueOf( LocalDateTime.now() ) ));
+		List<Note> list = criteria.list();
+		return list;
 		
 	}
 

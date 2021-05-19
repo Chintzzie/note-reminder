@@ -6,10 +6,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.entities.*;
+import com.google.gson.Gson;
 import com.services.*;
 import com.helper.*;
 
-
+import javax.json.Json;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -53,6 +54,7 @@ public class NoteBookServlet extends HttpServlet {
 			case "/edit":	this.editNoteBook(request, response);break;
 			case "/delete": this.deleteNoteBook(request, response);break;
 			case "/updateRemainder" : this.updateRemainder(request, response); break;
+			case "/getRemainders" :this.getRemainders(request, response);break;
 			
 			
 			 /*default: 
@@ -71,6 +73,31 @@ public class NoteBookServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	
+	protected void getRemainders(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	
+		int userId=Integer.parseInt(request.getParameter("userId"));
+		List<Note> remainderNotes=NoteBookService.getRemainders(userId);
+		
+		
+		System.out.println("Getting remainder notes");
+		for(Note n:remainderNotes)
+			System.out.print(n+",");
+		System.out.println("Got remainder notes!");
+		
+		
+		
+		String result=new Gson().toJson(remainderNotes);
+		System.out.println("RESULT:	"+result);
+		
+		 response.setContentType("application/json");
+	     response.setCharacterEncoding("UTF-8");
+	     response.getWriter().write(result);
+	     
+		
+		
+	}
+	
+
 	
 	protected void updateRemainder(HttpServletRequest request, HttpServletResponse response) {
 		String nid=request.getParameter("noteId");
