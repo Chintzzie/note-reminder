@@ -6,14 +6,21 @@
 package com.entities;
 
 import java.util.Date;
+
+
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Random;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+
+
+
 
 /**
  *
@@ -26,13 +33,21 @@ public class Note {
      
     @Id 
     private int id;
+    
     private String title;
+    
     @Column(length = 2000)
     private String content;
+    
+    
+    private String tag;
+    
     private int noteBookId;
     private boolean isReminderSet;
+    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date addedDate;
+    
     private Timestamp reminderTS;
  
     
@@ -45,12 +60,12 @@ public class Note {
      @Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return this.id+","+this.title+","+this.content+","+this.noteBookId+","+this.isReminderSet+","+this.reminderTS;
+		return this.id+","+this.title+","+this.content+","+this.tag+","+this.noteBookId+","+this.isReminderSet+","+this.reminderTS;
 	}
 
 
 
-	public Note(String title, String content, Date addedDate,int noteBookId) {
+	public Note(String title, String content, Date addedDate,int noteBookId,String tag) {
         this.id = new Random().nextInt(10000);
         this.title = title;
         this.content = content;
@@ -58,6 +73,7 @@ public class Note {
         this.noteBookId = noteBookId;
         this.isReminderSet=false;
         this.reminderTS=Timestamp.valueOf(LocalDateTime.now());
+        this.tag=tag;
     }
     
     
@@ -127,5 +143,19 @@ public class Note {
 	public void setReminderTS(Timestamp reminderTS) {
 		this.reminderTS = reminderTS;
 	}
+
+
+
+	public String getTag() {
+		return tag;
+	}
+
+
+
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+	
+	
    
 }

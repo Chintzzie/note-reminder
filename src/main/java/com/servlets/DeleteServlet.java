@@ -6,6 +6,7 @@
 package com.servlets;
 
 import com.entities.Note;
+import com.helper.ErrorLogger;
 import com.helper.FactoryProvider;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,7 +51,7 @@ public class DeleteServlet extends HttpServlet {
             s.delete(note);
             tx.commit();
             s.close();
-            response.sendRedirect("all_notes.jsp");
+            ErrorLogger.log("Deleted note!","/NoteTaker/all_notes.jsp?noteBookId="+note.getNoteBookId(), request, response,false);
             
             
            // out.println(noteId);

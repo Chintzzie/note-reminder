@@ -14,7 +14,9 @@
 let errorMsg=Cookies.get("errorMessage");
 let successMsg=Cookies.get("successMessage");
 
-//console.log("error:",errorMsg);
+console.log("error:",errorMsg);
+console.log("success:",successMsg);
+
 //alert("err: "+errorMsg);
 if(errorMsg!=null){
 	errorMsg=errorMsg.replace(/\+/g," ");

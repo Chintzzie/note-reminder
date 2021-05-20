@@ -25,10 +25,20 @@
         
         <div class="card my-4 bg">
             <img class="img-fluid mx-auto mt-3" style="max-width: 450px;z-index:2"
-                 src="https://i.ibb.co/pjG01Lf/oie-23103231-Uro9-Ewqw.gif">
+                 src="https://media0.giphy.com/media/nGtOFccLzujug/giphy.webp?cid=ecf05e4728czwc05wqv3qcs8fcro0yp9qz0379s34807v845&rid=giphy.webp&ct=g">
 <!--            <img src="Taking notes-amico.png" alt=""/>-->
 <h1 class="text-primary  text-center" style="color: #673ab7!important">
-                Start Taking Your Notes CHints!
+				<% if(uname==null){%>
+				Welcome  user!Login and start your note journey!
+				<%}else{ %>
+				
+                Start Taking Your Notes <%= uname  %>!
+                
+                <div style="text-align:center">
+		       		<a class="btn btn-outline-primary text-center my-2 " href="/NoteTaker/createNoteBookForm.jsp">Add noteBook</a>
+		        </div>
+		        
+                <%} %>
             </h1>
             
             <div class="container text-center my-2">

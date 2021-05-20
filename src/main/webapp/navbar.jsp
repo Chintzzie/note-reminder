@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-dark primary-bg">
-  <a class="navbar-brand" href="index.jsp">Note Taker</a>
+<nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" href="/NoteTaker/index.jsp">Note Taker</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -21,14 +21,16 @@
       	String uname=null;
       	Cookie[] cookies=request.getCookies();
       	Cookie cookie;
-      for (int i = 0; i < cookies.length; i++) {
-          cookie = cookies[i];
-          if(cookie.getName().equals("uid")){
-        	  uid=cookie.getValue();
-          }else if(cookie.getName().equals("uname")){
-        	  uname=cookie.getValue();
-          }
-       }
+      	if(cookies!=null){
+	      for (int i = 0; i < cookies.length; i++) {
+	          cookie = cookies[i];
+	          if(cookie.getName().equals("uid")){
+	        	  uid=cookie.getValue();
+	          }else if(cookie.getName().equals("uname")){
+	        	  uname=cookie.getValue();
+	          }
+	       }
+      	}
       %>
       
       <%if(uid!=null){ %>
@@ -36,9 +38,6 @@
           		<a class="nav-link" href="/NoteTaker/profile.jsp" tabindex="-1" aria-disabled="true"><%= uname %></a>
       		</li>
       		
-      	<li class="nav-item">
-          		<a class="nav-link" href="/NoteTaker/NoteBooks/getRemainders?userId=<%=uid %>" tabindex="-1" aria-disabled="true">Get Remainders</a>
-      		</li>
       		
       	<li class="nav-item">
           		<a class="nav-link" href="/NoteTaker/logout.jsp" tabindex="-1" aria-disabled="true">Logout</a>

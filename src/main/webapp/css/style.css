@@ -2,19 +2,33 @@
     background-color:#673ab7;
 }
 
+
+
+
+
+
+
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
 
 body, html {
   height: 100%;
   margin: 0;
-  font-family: 'Just Another Hand', cursive;
-  color:#673ab7!important;
+  font-family:cursive;
+  color:rgb(0,0,0);
 }
 
-.bg {
-  /* The image used */
-  background-image: url("Screenshot_2020-08-23 Plain Pattern(1).png");
+.chints{
+	color:rgb(0,0,0);
+}
 
+
+
+.bg {
+	
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM5tHcYhnXfOtLXDQpevPP1K-tWtkhFXyD4Q&usqp=CAU");
   /* Full height */
   height: 100%; 
 
@@ -22,4 +36,6 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+ 
+  
 }

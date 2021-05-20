@@ -112,8 +112,10 @@ public class NoteBookServlet extends HttpServlet {
 		System.out.println(noteId+","+remainderTS.toString());
 		
 		NoteBookService.updateNote(noteId, remainderTS);
-		ErrorLogger.log("Updated Remainder", "/NoteTaker/index.jsp", request, response,false);
+	
+		ErrorLogger.log("Updated Remainder", "/NoteTaker/NoteBooks/listAll", request, response,false);
 	}
+	
 	protected void createNoteBook(HttpServletRequest request, HttpServletResponse response) {
 		
 		String title=request.getParameter("title");
@@ -125,7 +127,7 @@ public class NoteBookServlet extends HttpServlet {
 		
 		NoteBook noteBook=new NoteBook(title,uid);
 		NoteBookService.createNoteBook(noteBook);
-		ErrorLogger.log("NoteBook created!", "/NoteTaker/index.jsp", request, response);
+		ErrorLogger.log("NoteBook created!", "/NoteTaker/NoteBooks/listAll", request, response,false);
 		
 		}catch(Exception e) {
 			ErrorLogger.log(e.getMessage(), "/NoteTaker/index.jsp", request, response,false);
@@ -137,9 +139,9 @@ public class NoteBookServlet extends HttpServlet {
 		System.out.println("entered getAllNoteBooks");
 		
 		int uid=UserService.getLoggedInUserId(request);
-		
+		System.out.println("got UserID:"+uid);
 		List<NoteBook> noteBooks=NoteBookService.listOfNoteBook(uid);
-		
+		System.out.println("got all noteBooks:	"+noteBooks);
 		request.setAttribute("noteBooks", noteBooks);
 		try {
 			System.out.println("Forwarding to getNotebOOks");

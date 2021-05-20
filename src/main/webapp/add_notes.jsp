@@ -45,6 +45,16 @@
                     <textarea name="content" id="content" placeholder="Enter your content here.." class="form-control" style="height: 300px;"></textarea>
                 </div>
                 
+                <div class="form-group">
+                    <label for="tag">Note TAG</label>
+                    <select name="tag">
+                    	<option value="important">Important</option>
+                    	<option value="urgent">Urgent</option>
+                    	<option value="info">Info</option>
+                    </select>
+                
+                </div>
+                
                 
                 
                 <textarea name="noteBookId" id="noteBookId"  hidden placeholder="Enter your noteBookId here.." class="form-control"  style="height: 300px;"><%= request.getParameter("noteBookId") %></textarea>
@@ -58,51 +68,7 @@
 
 
 
-        <script>
-            $(document).ready(function (e) {
-
-
-
-                $('#addNote').submit(function (event) {
-                    event.preventDefault(); // Prevent the form from submitting via the browser
-                 //   console.log("clicked on submit");
-                    let form = $(this);
-                 //   console.log(form);
-                 //   var form = new FormData(this);
-                    $.ajax({
-                        url: "SaveNoteServlet",
-                        type: 'POST',
-                        data: form.serialize(),
-                        dataType: "text",
-                                success: function (data, textStatus, jqXHR) {
-                                 //   console.log(data);
-                                    if (data.trim() == 'success')
-                                    {
-                                        swal("Noted it!", "Add another..?", "success");
-                                    } else
-                                    {
-                                        swal("Error!!", "Error from server", "error");
-                                    }
-
-
-                                },
-
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            //error..
-                            swal("Error!!", "Something went wrong try again...", "error");
-                        }
-
-
-                    });
-                });
-
-
-
-
-
-            })
-
-        </script>
+        
 
 
 

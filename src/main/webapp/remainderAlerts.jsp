@@ -15,14 +15,16 @@
       	String unamed=null;
       	Cookie[] cookiesd=request.getCookies();
       	Cookie cookied;
-      for (int i = 0; i < cookiesd.length; i++) {
-          cookied = cookiesd[i];
-          if(cookied.getName().equals("uid")){
-        	  uidd=cookied.getValue();
-          }else if(cookied.getName().equals("uname")){
-        	  unamed=cookied.getValue();
-          }
-       }
+      	if(cookiesd!=null){
+	      for (int i = 0; i < cookiesd.length; i++) {
+	          cookied = cookiesd[i];
+	          if(cookied.getName().equals("uid")){
+	        	  uidd=cookied.getValue();
+	          }else if(cookied.getName().equals("uname")){
+	        	  unamed=cookied.getValue();
+	          }
+	       }
+      	}
       %>
 	
 
@@ -33,10 +35,20 @@
 		
 		function notifyUser(remainderNote){
 			
+			
+			let tagClass="" ;
+		  	switch(remainderNote.tag){
+		  		case "important":tagClass="bg-primary";break;
+		  		case "urgent":tagClass="bg-danger";break;
+		  		case "info":tagClass="bg-info";break;
+		  	}
+		  	
+		  	$('#modalchints').addClass(tagClass);
+			
 			$('#remainderTitle').text(remainderNote.title);
 			$('#remainderContent').text(remainderNote.content);
 			$('#remainderTime').text(remainderNote.reminderTS);
-			
+			$('#gotonote').attr("href","/NoteTaker/all_notes.jsp?noteBookId="+remainderNote.noteBookId+"#"+remainderNote.id)
 			$('#exampleModal').modal()
 		}
 		

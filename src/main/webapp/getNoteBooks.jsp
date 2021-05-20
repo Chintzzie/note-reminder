@@ -21,7 +21,11 @@
     
     <div class="container">
         <%@include file="navbar.jsp" %> 
-        <a class="btn btn-outline-primary text-center my-2 " href="/NoteTaker/createNoteBookForm.jsp">Add noteBook</a>
+        
+        <div  style="text-align:center">
+       		<a class="btn btn-outline-primary text-center my-2 " href="/NoteTaker/createNoteBookForm.jsp">Add noteBook</a>
+        </div>
+        
         <%
         	List<NoteBook> noteBooks= (List<NoteBook>)request.getAttribute("noteBooks");
         	

@@ -28,12 +28,9 @@
     <%@include file="errorLogger.jsp" %>
     <%@include file="remainderAlerts.jsp" %>
     
-	    
-	
-	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
+	    <div class="modal-content" id="modalchints">
 	      <div class="modal-header">
 	        <h5 class="modal-title">Remainder</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -46,6 +43,7 @@
 	        <h5 id="remainderTime">###</h5>
 	      </div>
 	      <div class="modal-footer">
+	      	<a href="/NoteTaker/all_notes.jsp?noteBookId="  id = "gotonote" class="btn btn-primary" >Go to note!</a>
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	      </div>
 	    </div>

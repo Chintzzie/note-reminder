@@ -13,7 +13,7 @@
 <%@page import="org.hibernate.criterion.Restrictions"%>
 <%@page import="org.hibernate.Criteria"%>
 <%@page import="java.util.List"%>
-<%@page import="com.entities.Note"%>
+<%@page import="com.entities.*"%>
 
 <%@page import="org.hibernate.Session"%>
 <%@page import="com.helper.FactoryProvider"%>
@@ -34,22 +34,20 @@
     
     
   </head>
-  <body>
-   <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
- 
-    <div class="container">
+  <body class="bg">
+  
+ 	<%@ include file="base.jsp" %>
+    <div class="container ">
         <%@include file="navbar.jsp" %> 
+        
+        <br>
+        <a  href="/NoteTaker/NoteBooks/listAll" class="btn btn-info"> Back</a>
+        <div  style="text-align:center">
+        <a  href="/NoteTaker/add_notes.jsp?noteBookId=<%=request.getParameter("noteBookId")%>" class="btn btn-primary">Add new note</a>
+        </div>
    
-        
-        
-        <div class="row mx-5">
-            <div class="col-12">
-                
-                
+        <div class="row mx-5 ">
+            <div class="col-12 ">
                 
                 <% 
     
@@ -76,7 +74,16 @@ CriteriaQuery<Note> crt = builder.createQuery(Note.class);
 
     %>
     
-    <div class="card mt-5">
+     <% 
+	  	String tagClass="" ;
+	  	switch(notes.getTag()){
+	  		case "important":tagClass="bg-primary";break;
+	  		case "urgent":tagClass="bg-danger";break;
+	  		case "info":tagClass="bg-info";break;
+	  	}
+ 	 %>   
+    
+    <div class="card mt-5 <%=tagClass %>" >
         <img src="notes.jpg" class="card-img-top m-2 p-2 mx-auto" alt="note image" style="max-width: 200px">
         
         <% SimpleDateFormat fmt=new SimpleDateFormat("E dd-MMM,yyyy");
@@ -85,12 +92,12 @@ CriteriaQuery<Note> crt = builder.createQuery(Note.class);
         
         %> 
         
-        
-  <div class="card-body px-5">
+    
+  <div class="card-body px-5 chints" id="<%= notes.getId() %>">
      
       <p><%=date%></p>
     <h5 class="card-title"><%=notes.getTitle()%></h5>
-    <p class="card-text"><%=notes.getContent()%></p>
+    <p class="card-text "><%=notes.getContent()%></p>
    
    <div class="container text-center  mt-2 ">
       

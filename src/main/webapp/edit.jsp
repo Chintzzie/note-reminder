@@ -24,16 +24,7 @@
   </head>
   <body class="bg">
    
-      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script
-            src="https://code.jquery.com/jquery-3.5.1.js"
-            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
-      
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
- 
+      	<%@ include file="base.jsp" %>
     <div class="container">
         <%@include file="navbar.jsp" %> 
     </div>
@@ -69,54 +60,7 @@
   </form>
   </div>
   
-  <script>
   
-            
-            
-              $(document).ready(function (e) {
-
-
-
-                $('#updateNote').submit(function (event) {
-                    event.preventDefault(); // Prevent the form from submitting via the browser
-                 //   console.log("clicked on submit");
-                    let form = $(this);
-                 //   console.log(form);
-                 //   var form = new FormData(this);
-                    $.ajax({
-                        url: "UpdateServlet",
-                        type: 'POST',
-                        data: form.serialize(),
-                        dataType: "text",
-                                success: function (data, textStatus, jqXHR) {
-                                 //   console.log(data);
-                                    if (data.trim() == 'updated')
-                                    {
-                                           swal("Updated!",  "Redirecting you to show notes...","success");
-                                           window.location="all_notes.jsp";
-                                    } else
-                                    {
-                                        swal("Error!!", "Something went wrong try again...", "error");
-                                    }
-
-
-                                },
-
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            //error..
-                            swal("Error!!", "Something went wrong try again...", "error");
-                        }
-
-
-                    });
-                });
-
-
-
-
-
-            })
-  </script>
 
   </body>
 </html>

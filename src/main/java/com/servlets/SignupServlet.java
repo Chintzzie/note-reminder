@@ -14,6 +14,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.entities.User;
+import com.helper.ErrorLogger;
 import com.helper.FactoryProvider;
 
 /**
@@ -54,6 +55,7 @@ public class SignupServlet extends HttpServlet {
                 s.save(user);
                 tx.commit();
                 System.out.println("Done registration");
+                ErrorLogger.log("User registered succesfully!", "/NoteTaker/login.jsp", request, response,false);
                 
             }
 			
@@ -61,7 +63,7 @@ public class SignupServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("login.jsp");
+		//response.sendRedirect("login.jsp");
 		
 		
        

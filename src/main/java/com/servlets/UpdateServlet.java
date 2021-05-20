@@ -6,6 +6,7 @@
 package com.servlets;
 
 import com.entities.Note;
+import com.helper.ErrorLogger;
 import com.helper.FactoryProvider;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -58,8 +59,8 @@ public class UpdateServlet extends HttpServlet {
             
             tx.commit();
             s.close();
-               out.println("updated");
-           // response.sendRedirect("all_notes.jsp");
+               //out.println("updated");
+               ErrorLogger.log("Updated note","/NoteTaker/all_notes.jsp?noteBookId="+note.getNoteBookId(), request, response,false);
             
             
             

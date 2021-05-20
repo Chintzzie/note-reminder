@@ -76,10 +76,20 @@ public static List<Note> getRemainders(int userId) {
 
 	
 	public static List<NoteBook> listOfNoteBook(int userId) {
-		criteria = session.createCriteria(NoteBook.class);
-		criteria.add(Restrictions.eq("userId", userId));
-		List<NoteBook> list = criteria.list();
-		return list;
+		try {
+			System.out.println("Entered listOfNoteBook");
+			
+			criteria = session.createCriteria(NoteBook.class);
+			criteria.add(Restrictions.eq("userId", userId));
+			List<NoteBook> list = criteria.list();
+			
+			System.out.println("leaving listOfNoteBook");
+			return list;
+		}catch(Exception e) {
+			System.out.println("listOfNoteBookException"+e);
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	

@@ -7,10 +7,14 @@
         
       
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property> 
+        
+        <property name="connection.url">jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6413575</property>  
+        <property name="connection.username">sql6413575</property>  
+        <property name="connection.password">FPIFr8Bhrr</property> 
          
-        <property name="connection.url">jdbc:mysql://db4free.net:3306/notifier</property>  
+        <!--  <property name="connection.url">jdbc:mysql://db4free.net:3306/notifier</property>  
         <property name="connection.username">chints</property>  
-        <property name="connection.password">12345678</property>  
+        <property name="connection.password">12345678</property>  -->
         
         <!--  <property name="connection.url">jdbc:mysql://localhost:33060/notifier</property>  
         <property name="connection.username">root</property>  
@@ -32,7 +36,7 @@
         
         
         
-        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>  
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>  
         <property name="hbm2ddl.auto">update</property>    <!--    it upadtes the table-->
         <!--<property name="hbm2ddl.auto">create</property>       it creates the table-->
         <property name="show_sql">true</property>  

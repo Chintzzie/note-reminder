@@ -5,7 +5,8 @@
  */
 package com.servlets;
 
-import com.entities.Note;
+import com.entities.*;
+import com.helper.ErrorLogger;
 import com.helper.FactoryProvider;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -49,12 +50,14 @@ public class SaveNoteServlet extends HttpServlet {
                 String title=request.getParameter("title");
                 String content=request.getParameter("content");
                 String nbid=request.getParameter("noteBookId") ;
+                String tagS=request.getParameter("tag");
+                
                 
                 System.out.println("noteBookId="+nbid);
                 
                 int noteBookId=Integer.parseInt(nbid);
                 
-                Note note=new Note(title,content,new Date(),noteBookId);
+                Note note=new Note(title,content,new Date(),noteBookId,tagS);
                 
                 //System.out.println("SaveNoteServlet: "+note.getNoteBookId());
               
@@ -63,8 +66,12 @@ public class SaveNoteServlet extends HttpServlet {
                     s.save(note);
                     tx.commit();
                 }
-             //   response.sendRedirect("add_notes.jsp");
-                         out.println("success");
+                
+                
+                ErrorLogger.log("Added note","/NoteTaker/all_notes.jsp?noteBookId="+noteBookId, request, response,false);
+                
+               //response.sendRedirect("/NoteTaker/all_notes.jsp?noteBookId="+noteBookId);
+                         //out.println("success");
 
 //       testing
         System.out.println(note.getId()+":");
