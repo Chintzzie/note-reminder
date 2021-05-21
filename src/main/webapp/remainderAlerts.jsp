@@ -56,7 +56,7 @@
 			remainderNotes.forEach(remainderNote=>{
 				let alarmDate=new Date(remainderNote.reminderTS);
 				let timeToAlarm=alarmDate.getTime()-new Date().getTime();
-				if (timeToAlarm<2147483647){
+				if (timeToAlarm<2147483647 && timeToAlarm>0){
 					window.setTimeout(()=>{
 						//alert("Alarm for remainderNote:"+remainderNote.title);
 						notifyUser(remainderNote);

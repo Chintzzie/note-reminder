@@ -75,12 +75,17 @@ CriteriaQuery<Note> crt = builder.createQuery(Note.class);
     %>
     
      <% 
+
 	  	String tagClass="" ;
-	  	switch(notes.getTag()){
-	  		case "important":tagClass="bg-primary";break;
-	  		case "urgent":tagClass="bg-danger";break;
-	  		case "info":tagClass="bg-info";break;
-	  	}
+      String tag=notes.getTag();
+      
+      if(tag.equals("important"))
+        tagClass="bg-primary";
+      else if(tag.equals("urgent"))
+        tagClass="bg-danger";
+      else if(tag.equals("info"))
+        tagClass="bg-info";  
+
  	 %>   
     
     <div class="card mt-5 <%=tagClass %>" >

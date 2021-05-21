@@ -10,6 +10,8 @@
     <name>NoteTaker</name>
 
     <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -28,7 +30,7 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
+            <version>8.0</version>
             <scope>provided</scope>
         </dependency>
         
@@ -93,8 +95,9 @@
 			    <artifactId>tomcat7-maven-plugin</artifactId>
 			    <version>2.2</version>
 			    <configuration>
-			        <url>http://localhost:8080</url>
-			        <path>/</path>
+			        <url>http://localhost:8081</url>
+			        <path>/NoteTaker</path>
+                    <port>8081</port>
 			    </configuration>
 			</plugin>
 	        
@@ -103,11 +106,13 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                    <compilerArguments>
+                    <source>1.8</source>
+                    <target>1.8</target>
+
+                    <!--<compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
-                    </compilerArguments>
+                    </compilerArguments> -->
+                    
                 </configuration>
             </plugin>
             
@@ -136,8 +141,8 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>7.0</version>
+                                    <artifactId>javaee-api</artifactId>
+                                    <version>8.0</version>
                                     <type>jar</type>
                                 </artifactItem>
                             </artifactItems>
